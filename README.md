@@ -5,7 +5,10 @@ This app allows you to retrieve latest news from popular technology news portals
 
 To set up:
 
-# install python, pip and virtualenv in your local environment
-# clone the project
-# set up virtual environment
-# install feedparser with pip: `pip install feedparser`
+1.install python, pip and virtualenv in your local environment
+
+2.clone the project
+
+3.set up virtual environment
+
+4.install feedparser with pip: `pip install feedparser`
