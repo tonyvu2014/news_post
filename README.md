@@ -11,4 +11,4 @@ To set up:
 
 3.set up virtual environment
 
-4.install feedparser with pip: `pip install feedparser`
+4.install dependencies with pip: `pip install -r requirements.txt`
