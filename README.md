@@ -13,12 +13,12 @@ To set up:
 
 4.install dependencies with pip: `pip install -r requirements.txt`
 
-5. follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
+5.follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
    update the api_confif.json with your api information
 
-6. update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
+6.update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
 
-7. read_all_subscribe_news_feed() in `read_news_feed.py` will feed all the latest news from the feed that you subscribe to
+7.read_all_subscribe_news_feed() in `read_news_feed.py` will feed all the latest news from the feed that you subscribe to
 
 
  
