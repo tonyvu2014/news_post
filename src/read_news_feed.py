@@ -1,9 +1,5 @@
 import feedparser
-
-TC_NEWS_FEED_URL = "http://techcrunch.com/feed/"
-TNW_NEWS_FEED_URL = "http://thenextweb.com/feed/"
-
-SUBSCRIBE_CATEGORY = ['mobile', 'developer', 'entrepreneur', 'tech', 'apps', 'startups', 'startup', 'software engineering']
+from read_config import read_config
 
 class NewsFeed(object):
     def __init__(self, title, link, description):
@@ -12,13 +8,15 @@ class NewsFeed(object):
         self.description = description
         
     def __str__(self):
-        return u"Title: {title}\nURL: {url}\n".format(title=self.title, url=self.link).encode('utf-8')   
+        return u"Title: {title}\nURL: {url}\nDescription: {desc}".format(title=self.title, url=self.link, desc=self.description).encode('utf-8')   
     
 
 def read_subscribe_news_feed(url):
+    config = read_config('feed_config.json')
+    
     def has_subscribe_category(post):
         for tag in post.get('tags'):
-            if tag['term'].lower() in SUBSCRIBE_CATEGORY:
+            if tag['term'].lower() in config['category']:
                 return True
         return False             
     
@@ -26,11 +24,16 @@ def read_subscribe_news_feed(url):
     for post in feed.entries:
           if has_subscribe_category(post):
               yield NewsFeed(post.title, post.link, post.description)
-                     
+              
+            
+def read_all_subscribe_news_feed(feed_file):              
+    config = read_config(feed_file)
+    for url in config['feed_url']:
+        for news in read_subscribe_news_feed(url):
+            yield news               
+        
         
 if __name__ == '__main__':
-    for tnw_news in read_subscribe_news_feed(TNW_NEWS_FEED_URL):
-        print tnw_news
-    for tc_news in read_subscribe_news_feed(TC_NEWS_FEED_URL):
-        print tc_news
-    
+    for news in read_all_subscribe_news_feed('feed_config.json'):
+        print news
+
