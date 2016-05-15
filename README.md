@@ -15,6 +15,8 @@ To set up:
 
 5.follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
    update the api_confif.json with your api information
+   
+   https://developer.linkedin.com/docs/oauth2
 
 6.update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
 
