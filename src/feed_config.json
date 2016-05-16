@@ -1,4 +1,4 @@
 {
-	"feed_url":["http://techcrunch.com/feed/", "http://thenextweb.com/feed/"],
-	"category": ["mobile", "developer", "entrepreneur", "tech", "apps", "startups", "startup", "software engineering"]
+	"feed_url":["http://techcrunch.com/feed/", "http://thenextweb.com/feed/", "http://www.wired.com/feed", "http://mashable.com/feed/"],
+	"category": ["mobile", "developer", "entrepreneur", "tech", "apps", "startups", "startup", "software engineering", "android", "google"]
 }

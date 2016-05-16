@@ -11,12 +11,10 @@ class NewsFeed(object):
         return u"Title: {title}\nURL: {url}\nDescription: {desc}".format(title=self.title, url=self.link, desc=self.description).encode('utf-8')   
     
 
-def read_subscribe_news_feed(url):
-    config = read_config('feed_config.json')
-    
+def read_subscribe_news_feed(url, subscribe_category):    
     def has_subscribe_category(post):
         for tag in post.get('tags'):
-            if tag['term'].lower() in config['category']:
+            if tag['term'].lower() in subscribe_category:
                 return True
         return False             
     
@@ -29,7 +27,7 @@ def read_subscribe_news_feed(url):
 def read_all_subscribe_news_feed(feed_file):              
     config = read_config(feed_file)
     for url in config['feed_url']:
-        for news in read_subscribe_news_feed(url):
+        for news in read_subscribe_news_feed(url, config['category']):
             yield news               
         
         
