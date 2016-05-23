@@ -2,3 +2,4 @@ feedparser
 requests
 schedule
 enum34
+supervisor

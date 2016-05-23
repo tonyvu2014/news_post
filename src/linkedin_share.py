@@ -59,5 +59,5 @@ def schedule_share(time_frame, time_point=None):
           
           
 if __name__ == '__main__':
-    share_random()
+    schedule_share(TimeFrame.Day, "23:45")
    
