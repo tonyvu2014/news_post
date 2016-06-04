@@ -14,7 +14,7 @@ To set up:
 4.install dependencies with pip: `pip install -r requirements.txt`
 
 5.follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
-   update the api_confif.json with your api information
+   update the api_config.json with your api information
    
    https://developer.linkedin.com/docs/oauth2
 
