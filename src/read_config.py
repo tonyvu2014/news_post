@@ -9,5 +9,5 @@ def read_config(config_file):
 
 
 if __name__ == '__main__':
-    config = read_config('api_config.json')
+    config = read_config('json/api_config.json')
     pprint(config)

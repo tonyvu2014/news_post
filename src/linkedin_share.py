@@ -1,12 +1,12 @@
 import requests
-import const
 import json
 import random
 import schedule
 import time
 from read_news_feed import NewsFeed, read_all_subscribe_news_feed
 from read_config import read_config
-from time_frame import TimeFrame
+from common.time_frame import TimeFrame
+from common import const
 
 
 LINKEDIN_URL="https://www.linkedin.com"
@@ -23,7 +23,7 @@ def share_on_linkedin(newsfeed):
             "code": "anyone"
         }  
     }
-    config = read_config('api_config.json')
+    config = read_config('json/api_config.json')
     headers = {'content-type': 'application/json', 'x-li-format': 'json', 'Authorization': 'Bearer {}'.format(config[const.CODE])}
     r = requests.post(SHARE_API_URL, data = json.dumps(payload), headers=headers)
     print r.json()

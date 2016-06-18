@@ -32,6 +32,6 @@ def read_all_subscribe_news_feed(feed_file):
         
         
 if __name__ == '__main__':
-    for news in read_all_subscribe_news_feed('feed_config.json'):
+    for news in read_all_subscribe_news_feed('json/feed_config.json'):
         print news
 
