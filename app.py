@@ -9,7 +9,7 @@ app.redis_server = redis.StrictRedis(host='localhost',port= 6379)
 
 @app.route("/")
 def main():
-    news_list = read_all_subscribe_news_feed('src/json/feed_config.json')
+    news_list = sorted(list(read_all_subscribe_news_feed('src/json/feed_config.json')), key=lambda x:x.published_date, reverse=True)
     return render_template('index.html', news_list=news_list)
 
 if __name__ == "__main__":
