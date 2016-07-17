@@ -5,7 +5,7 @@ import schedule
 import time
 import os
 from read_news_feed import NewsFeed, read_all_subscribe_news_feed
-from read_config import read_config
+from read_config import read_api_config
 from common.time_frame import TimeFrame
 from common import const
 
@@ -24,8 +24,7 @@ def share_on_linkedin(newsfeed):
             "code": "anyone"
         }  
     }
-    api_file = os.path.dirname(os.path.realpath(__file__)) + "/json/api_config.json"
-    config = read_config('json/api_config.json')
+    config = read_api_config()
     headers = {'content-type': 'application/json', 'x-li-format': 'json', 'Authorization': 'Bearer {}'.format(config[const.CODE])}
     print u"Sharing: {}".format(newsfeed.title).encode('utf-8')
     r = requests.post(SHARE_API_URL, data = json.dumps(payload), headers=headers)
@@ -33,15 +32,13 @@ def share_on_linkedin(newsfeed):
 
     
 def share_random():
-    feed_file = os.path.dirname(os.path.realpath(__file__)) + "/json/feed_config.json"
-    news_list = list(read_all_subscribe_news_feed(feed_file))
+    news_list = list(read_all_subscribe_news_feed())
     news = random.choice(news_list)
     share_on_linkedin(news)
     
     
 def share_all():
-    feed_file = os.path.dirname(os.path.realpath(__file__)) + "/json/feed_config.json"
-    for news in read_all_subscribe_news_feed(feed_file):
+    for news in read_all_subscribe_news_feed():
         share_on_linkedin(news)
         
         
