@@ -1,3 +1,4 @@
+import os
 import feedparser
 from time import mktime
 from datetime import datetime
@@ -35,6 +36,8 @@ def read_all_subscribe_news_feed(feed_file):
         
         
 if __name__ == '__main__':
-    for news in sorted(list(read_all_subscribe_news_feed('json/feed_config.json')), key=lambda x: x.published_date, reverse=True):
-        print news.published_date
+    feed_file = os.path.dirname(os.path.realpath(__file__)) + "/json/feed_config.json"
+    for news in sorted(list(read_all_subscribe_news_feed(feed_file)), key=lambda x: x.published_date, reverse=True):
+        print news
+        print "\n"
 

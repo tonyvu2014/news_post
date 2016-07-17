@@ -1,4 +1,5 @@
 import json
+import os
 from pprint import pprint
 
 
@@ -9,5 +10,6 @@ def read_config(config_file):
 
 
 if __name__ == '__main__':
-    config = read_config('json/api_config.json')
+    api_file = os.path.dirname(os.path.realpath(__file__)) + "/json/api_config.json"
+    config = read_config(api_file)
     pprint(config)
