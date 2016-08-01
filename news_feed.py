@@ -2,7 +2,7 @@ import os
 import feedparser
 from time import mktime
 from datetime import datetime
-from read_config import read_feed_config
+
 
 class NewsFeed(object):
     def __init__(self, title, link, description, published_date):
@@ -26,17 +26,3 @@ def read_subscribe_news_feed(url, subscribe_category):
     for post in feed.entries:
           if has_subscribe_category(post):
               yield NewsFeed(post.title, post.link, post.description, datetime.fromtimestamp(mktime(post.published_parsed)))
-              
-            
-def read_all_subscribe_news_feed():
-    config = read_feed_config()
-    for url in config['feed_url']:
-        for news in read_subscribe_news_feed(url, config['category']):
-            yield news               
-        
-        
-if __name__ == '__main__':
-    for news in sorted(list(read_all_subscribe_news_feed()), key=lambda x: x.published_date, reverse=True):
-        print news
-        print "\n"
-
