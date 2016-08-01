@@ -20,13 +20,13 @@ def feeds():
     return render_template('index.html', news_list=news_list) 
     
     
-@app.route("/add_category/<category>")    
+@app.route("/add_category/<category>")
 def add_category(category):   
     add_to_list(const.CATEGORY, category)
     return 'Category {} is added'.format(category)
     
 
-@app.route("/view_category")    
+@app.route("/view_category")
 def view_category():   
     categories = get_list(const.CATEGORY)
     return 'Categories: {}'.format(",".join(categories))

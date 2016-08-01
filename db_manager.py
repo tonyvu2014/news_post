@@ -18,3 +18,5 @@ def add_to_list(key, value):
 def get_list(key):
     return app_redis.lrange(key, 0, -1)
 
+
+
