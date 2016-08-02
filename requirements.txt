@@ -4,6 +4,4 @@ schedule
 enum34
 supervisor
 flask
-flask-mysql
-flask-sqlalchemy
 redis
