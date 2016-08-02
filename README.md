@@ -3,11 +3,12 @@ An app to retrieve latest news from popular online portals and post to your soci
 
 This app allows you to retrieve latest news from popular technology news portals and then you can share on your LinkedIn wall.
 
-To set up:
-
 1. install python, pip and virtualenv in your local environment
 
 2. clone the project
+
+##To  run with virtual environment:
+
 
 3. set up virtual environment
 
@@ -21,6 +22,16 @@ To set up:
 6. update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
 
 7. start the flask app with `python app.py`, then go to `localhost:5000` to see the app
+
+##To run with Docker
+
+3. From the root folder, run `docker build -t news_post .` to bulild the docker image
+
+4. Run `docker run -p 5000:5000 -i -t news_post`
+
+5. Open the app at `http://<docker-machine-ip-address>:5000`
+
+
 
 
  
