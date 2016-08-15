@@ -22,7 +22,7 @@ This app allows you to retrieve latest news from popular technology news portals
 
 ##To run with Docker
 
-1. From the root folder, run `docker build -t news_post .` to bulild the docker image
+1. From the root folder, run `docker build -t news_post .` to build the docker image
 
 2. Run `docker run -p 5000:5000 -i -t news_post`
 
