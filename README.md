@@ -22,11 +22,13 @@ This app allows you to retrieve latest news from popular technology news portals
 
 ##To run with Docker
 
-1. From the root folder, run `docker build -t news_post .` to bulild the docker image
+1. From the root folder, run `docker build -t news_post .` to build the docker image
 
 2. Run `docker run -p 5000:5000 -i -t news_post`
 
 3. Open the app at `http://<docker-machine-ip-address>:5000`
+
+   _Note: To find out the docker machine ip address you can use command `docker-machine ip default`_
 
 
 
