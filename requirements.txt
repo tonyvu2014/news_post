@@ -5,3 +5,4 @@ enum34
 supervisor
 flask
 redis
+gunicorn

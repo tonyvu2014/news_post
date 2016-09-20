@@ -6,7 +6,9 @@ from read_news_feed import (
     read_db_all_subscribe_news_feed_in_parallel
 )
 from common import const   
-from db_manager import add_to_list, get_list       
+from db_manager import add_to_list, get_list
+from werkzeug.contrib.fixers import ProxyFix
+       
 
 app = Flask(__name__)
 
@@ -33,7 +35,8 @@ def add_category(category):
 def view_category():   
     categories = get_list(const.CATEGORY)
     return 'Categories: {}'.format(",".join(categories))
-                
+    
+app.wsgi_app = ProxyFix(app.wsgi_app)            
 
 if __name__ == "__main__":
     port = int(os.getenv('PORT', 5000))

@@ -18,13 +18,15 @@ This app allows you to retrieve latest news from popular technology news portals
 
 4. update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
 
-5. start the flask app with `python app.py`, then go to `localhost:5000` to see the app
+5. start the flask app with `gunicorn app:app`, then go to `localhost:8000` to see the app
+
+   or you can start the app with supervisor `supervisord -c conf/supervisord.conf`
 
 ##To run with Docker
 
 1. From the root folder, run `docker build -t news_post .` to build the docker image
 
-2. Run `docker run -p 5000:5000 -i -t news_post`
+2. Run `docker run -p 8000:8000 -i -t news_post`
 
 3. Open the app at `http://<docker-machine-ip-address>:5000`
 
