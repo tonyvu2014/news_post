@@ -28,7 +28,7 @@ This app allows you to retrieve latest news from popular technology news portals
 
 2. Run `docker run -p 8000:8000 -i -t news_post`
 
-3. Open the app at `http://<docker-machine-ip-address>:5000`
+3. Open the app at `http://<docker-machine-ip-address>:8000`
 
    _Note: To find out the docker machine ip address you can use command `docker-machine ip default`_
 
