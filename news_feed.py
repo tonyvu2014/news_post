@@ -26,4 +26,10 @@ def read_subscribe_news_feed(url, subscribe_category):
     for post in feed.entries:
           if has_subscribe_category(post):
               yield NewsFeed(post.title, post.link, post.description, datetime.fromtimestamp(mktime(post.published_parsed)))
+              
+if __name__=='__main__':
+    data = feedparser.parse('http://techcrunch.com/feed/')
+    print data.feed
+    for idx, feed in enumerate(data.entries):
+        print idx, ":", feed.get('category')              
 

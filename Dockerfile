@@ -15,6 +15,8 @@ RUN apt-get -y update
 # Install basic applications
 RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential supervisor
 RUN mkdir -p /var/log/news_post
+RUN mkdir -p /var/log/news_post/app.log
+RUN mkdir -p /var/log/news_post/err.log
 
 # Install Python and Basic Python Tools
 RUN apt-get install -y python python-dev python-distribute python-pip
@@ -33,4 +35,4 @@ WORKDIR /news_post
 
 # Set the default command to execute    
 # when creating a new container
-CMD gunicorn app:app
+CMD /usr/bin/supervisord -c /news_post/conf/supervisord.conf
