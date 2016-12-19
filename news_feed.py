@@ -17,6 +17,8 @@ class NewsFeed(object):
 
 def read_subscribe_news_feed(url, subscribe_category):    
     def has_subscribe_category(post):
+        if post.get('tags') is None:
+            return False
         for tag in post.get('tags'):
             if tag['term'].lower() in subscribe_category:
                 return True

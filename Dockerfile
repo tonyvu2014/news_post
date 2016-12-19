@@ -9,11 +9,12 @@ FROM ubuntu
 # File Author / Maintainer
 MAINTAINER "TONY VU"
 
+
 # Update the sources list
-RUN apt-get -y update
+RUN sudo apt-get -y update
 
 # Install basic applications
-RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential supervisor
+RUN sudo apt-get install -y tar git curl nano wget dialog net-tools build-essential supervisor
 RUN mkdir -p /var/log/news_post
 RUN mkdir -p /var/log/news_post/app.log
 RUN mkdir -p /var/log/news_post/err.log
@@ -27,6 +28,7 @@ COPY . /news_post
 # Get pip to download and install requirements:
 RUN pip install -r /news_post/requirements.txt
 
+
 # Expose ports
 EXPOSE 8000
 
@@ -35,4 +37,4 @@ WORKDIR /news_post
 
 # Set the default command to execute    
 # when creating a new container
-CMD /usr/bin/supervisord -c /news_post/conf/supervisord.conf
+CMD gunicorn app:app
