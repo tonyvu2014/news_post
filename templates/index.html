@@ -2,13 +2,16 @@
 <html lang="en">
  
 <head>
-    <title>Python Flask News Feed App</title>
+    <title>News Feed</title>
  
  
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
  
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
  
 </head>
  
@@ -20,35 +23,35 @@
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active"><a href="#">Home</a>
                     </li>
-                    <li role="presentation"><a href="setToken">Set Token</a>
+                    <li role="presentation"><a href="set_token">Set Token</a>
                     </li>
-                    <li role="presentation"><a href="setFeeds">Set Feeds</a>
+                    <li role="presentation"><a href="set_feeds">Set Feeds</a>
                     </li>
-                    <li role="presentation"><a href="setCategories">Set Categories</a>
+                    <li role="presentation"><a href="set_categories">Set Categories</a>
                     </li>
                 </ul>
             </nav>
-            <h3 class="text-muted">News Feed App</h3>
+            <h3 class="text-muted">News Feed</h3>
         </div>
  
         <div class="jumbotron">
-            <h1>News Feed App</h1>
+            <h1>News Feed</h1>
             <p class="lead"></p>
             <p><a class="btn btn-lg btn-success" href="/" role="button">Update News</a>
             </p>
         </div>
  
+        <div id="news_list">       
+        {% for news in news_list %}
         <div class="row">
-            <div class="media">
-				{% for news in news_list %}
                 <h3>{{ news.title }}</h3>
                 <div>{{ news.description | safe }}</div>
-				{% endfor %}
-            </div>
         </div>
+		{% endfor %}	
+	    </div> 	
 		
+        <br/>
 		
- 
         <footer class="footer">
             <p>&copy; Tony Vu 2016</p>
         </footer>

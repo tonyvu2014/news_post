@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <title>News Feed</title>
+  
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+ 
+</head>
+
+<body>
+<div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation" class="active"><a href="#">Set Token</a>
+                    </li>
+                    <li role="presentation"><a href="set_feeds">Set Feeds</a>
+                    </li>
+                    <li role="presentation"><a href="set_categories">Set Categories</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">News Feed</h3>
+        </div>
+		<form action="{{ url_for('update_token') }}" method="POST">
+			<div class="form-group">
+				<label for="token">Token</label>
+				<input type="text" class="form-control" name="token">
+			</div>
+			<button type="submit" class="btn btn-primary">Set</button>
+		</form>
+</div>
+</body>
