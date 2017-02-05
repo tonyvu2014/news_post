@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="panel panel-default">
+	<i class="fa fa-info-circle" aria-hidden="true"></i>
+	<span class="text-muted">Set category to subscribe</span>
+</div>
+<div class="panel panel-default">
+	<form action="{{ url_for('update_category') }}" method="POST">
+		<div class="form-group">
+			<label for="category">Category</label>
+			<input type="text" class="form-control" name="category" data-role="tagsinput" value="{{ category_value }}">
+		</div>
+		<button type="submit" class="btn btn-primary">Set</button>
+	</form>
+</div>
+{% endblock %}

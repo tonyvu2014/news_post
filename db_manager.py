@@ -12,11 +12,14 @@ def set_value(key, value):
     
     
 def add_to_list(key, value):
-    app_redis.lpush(key, value)
+    app_redis.lpush(key, *value)
     
     
 def get_list(key):
     return app_redis.lrange(key, 0, -1)
+    
+def del_key(key):
+    app_redis.delete(key)    
 
 
 

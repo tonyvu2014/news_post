@@ -6,7 +6,7 @@ from read_news_feed import (
     read_db_all_subscribe_news_feed_in_parallel
 )
 from common import const   
-from db_manager import add_to_list, get_list, set_value, get_value
+from db_manager import add_to_list, get_list, set_value, get_value, del_key
 from werkzeug.contrib.fixers import ProxyFix
        
 
@@ -19,32 +19,50 @@ def main():
     return render_template('index.html', news_list=news_list)
     
     
-@app.route("/list")
-def feeds():
-    news_list = sorted(read_db_all_subscribe_news_feed_in_parallel(), key=lambda x:x.published_date, reverse=True)
-    return render_template('index.html', news_list=news_list) 
+# @app.route("/list")
+# def feeds():
+#     news_list = sorted(read_db_all_subscribe_news_feed_in_parallel(), key=lambda x:x.published_date, reverse=True)
+#     return render_template('index.html', news_list=news_list)
     
     
-@app.route("/add_category/<category>")
-def add_category(category):   
+@app.route("/update_category/", methods=["POST"])
+def update_category():
+    category = request.form[const.CATEGORY].split(",")  
+    print(str(category))
+    del_key(const.CATEGORY)
     add_to_list(const.CATEGORY, category)
-    return 'Category {} is added'.format(category)
+    return redirect(url_for('main'))
     
 
-@app.route("/view_category")
-def view_category():   
+@app.route("/set_category")
+def set_category():   
     categories = get_list(const.CATEGORY)
-    return 'Categories: {}'.format(",".join(categories))
+    category_value = ",".join(categories)
+    return render_template('category_form.html', category_value=category_value)
     
     
 @app.route("/set_token")
 def set_token():
-    return render_template('token_form.html')
+    client_id_value = get_value(const.CLIENT_ID)
+    client_secret_value = get_value(const.CLIENT_SECRET)
+    redirect_uri_value = get_value(const.REDIRECT_URI)
+    code_value = get_value(const.CODE)
+    tokens = {
+        const.CLIENT_ID: client_id_value,
+        const.CLIENT_SECRET: client_secret_value,
+        const.REDIRECT_URI: redirect_uri_value,
+        const.CODE: code_value
+    }    
+    print(str(tokens))
+    return render_template('token_form.html', tokens=tokens)
     
 
 @app.route("/update_token/", methods=['POST'])    
 def update_token():
-    set_value('token', request.form['token']);
+    set_value(const.CLIENT_ID, request.form[const.CLIENT_ID])
+    set_value(const.CLIENT_SECRET, request.form[const.CLIENT_SECRET])
+    set_value(const.CODE, request.form[const.CODE])
+    set_value(const.REDIRECT_URI, request.form[const.REDIRECT_URI])
     return redirect(url_for('main'))
     
     

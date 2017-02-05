@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>News Feed</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+	
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-tagsinput.css')}}"/>
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Home</a>
+                    </li>
+                    <li role="presentation"><a href="set_token">Token</a>
+                    </li>
+                    <li role="presentation"><a href="set_feed">Feed</a>
+                    </li>
+                    <li role="presentation"><a href="set_category">Category</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">News Feed</h3>
+        </div>
+ 
+       {% block content %} {% endblock %}
+		
+		<br/>
+		
+        <footer class="footer">
+            <p>&copy; Tony Vu 2016</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

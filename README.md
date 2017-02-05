@@ -7,18 +7,18 @@ This app allows you to retrieve latest news from popular technology news portals
 ##To  run with virtual environment:
 
 
-1. install pip and set up the virtual environment
+1. Install pip and set up the virtual environment
 
-2. install dependencies with pip: `pip install -r requirements.txt`
+2. Install dependencies with pip: `pip install -r requirements.txt`
 
-3. follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
+3. Follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
    update the api_config.json with your api information
    
    https://developer.linkedin.com/docs/oauth2
 
-4. update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
+4. Update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
 
-5. start the flask app with `gunicorn app:app`, then go to `localhost:8000` to see the app
+5. Start the flask app with `gunicorn app:app`, then go to `localhost:8000` to see the app
 
    or you can start the app with supervisor `supervisord -c conf/supervisord.conf`
 
