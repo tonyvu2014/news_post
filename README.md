@@ -12,6 +12,19 @@ The technologies used are:
 - flask 0.11.1
 - redis 2.10.0
 - gunicorn 19.6.0 
+- twitter bootstrap
+- font-awesome 
+
+
+##Usage
+
+1. Go to category to add/remove category that you want to subscribe to
+
+2. Go to feed to add/remove feed url that you want to get the news from
+
+3. Go to homepage to see the latest news
+
+4. From homepage, click on `Update News` to refresh the page 
 
 
 ##To  run with virtual environment:
