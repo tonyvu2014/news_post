@@ -1,3 +1,6 @@
+<a href="https://badge.fury.io/py/scikit-learn"><img alt="Python27" src="https://camo.githubusercontent.com/352488c0cbba0e8f6da11ae0761444dd0c93489c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d322e372d626c75652e737667" data-canonical-src="https://img.shields.io/badge/python-2.7-blue.svg" style="max-width:100%;">
+</a>
+
 # news_post
 An app to retrieve latest news from popular online portals and post to your social media walls
 
