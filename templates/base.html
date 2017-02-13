@@ -29,13 +29,13 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="{{ url_for("main") }}">Home</a>
+                    <li role="presentation" class="{{ 'active' if active=='main' else '' }}"><a href="{{ url_for("main") }}">Home</a>
                     </li>
                     <!-- <li role="presentation"><a href="set_token">Token</a>
                     </li> -->
-                    <li role="presentation"><a href="{{ url_for("set_category") }}">Category</a>
+                    <li role="presentation" class="{{ 'active' if active=='category' else '' }}"><a href="{{ url_for("set_category") }}">Category</a>
                     </li>
-                    <li role="presentation"><a href="{{ url_for("set_feed") }}">Feed</a>
+                    <li role="presentation" class="{{ 'active' if active=='feed' else '' }}"><a href="{{ url_for("set_feed") }}">Feed</a>
                     </li>
                 </ul>
             </nav>
