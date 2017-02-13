@@ -2,9 +2,16 @@
 </a>
 
 # news_post
-An app to retrieve latest news from popular online portals and post to your social media walls
+An app to retrieve latest news from popular online portals through feeds.
 
-This app allows you to retrieve latest news from popular technology news portals and then you can share on your LinkedIn wall.
+This app allows you to configure categories and feeds to retrieve latest news from popular news portals.
+
+The technologies used are:
+
+- python 2.7
+- flask 0.11.1
+- redis 2.10.0
+- gunicorn 19.6.0 
 
 
 ##To  run with virtual environment:
@@ -14,12 +21,7 @@ This app allows you to retrieve latest news from popular technology news portals
 
 2. Install dependencies with pip: `pip install -r requirements.txt`
 
-3. Follow these steps to set up your LinkedIn client_id, client_secret, redirect_uri and access_token
-   update the api_config.json with your api information
-   
-   https://developer.linkedin.com/docs/oauth2
-
-4. Update feed_config.json with list of all news feed url that you want to feed and list of category that you want to subscribe to.
+3. Go into virtual environment
 
 5. Start the flask app with `gunicorn app:app`, then go to `localhost:8000` to see the app
 
