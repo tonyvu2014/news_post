@@ -4,6 +4,7 @@
 <head>
     <title>News Feed</title>
  
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon-newspaper-o.ico')}}" type="image/x-icon">
  
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
@@ -11,9 +12,14 @@
  
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	
-	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
 	
-	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-tagsinput.css')}}"/>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-tagsinput.css')}}"/>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+	<script src="{{ url_for('static', filename='js/bootstrap-tagsinput.min.js')}}"></script>
+	
  
 </head>
  
@@ -23,13 +29,13 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a>
+                    <li role="presentation" class="active"><a href="{{ url_for("main") }}">Home</a>
                     </li>
-                    <li role="presentation"><a href="set_token">Token</a>
+                    <!-- <li role="presentation"><a href="set_token">Token</a>
+                    </li> -->
+                    <li role="presentation"><a href="{{ url_for("set_category") }}">Category</a>
                     </li>
-                    <li role="presentation"><a href="set_feed">Feed</a>
-                    </li>
-                    <li role="presentation"><a href="set_category">Category</a>
+                    <li role="presentation"><a href="{{ url_for("set_feed") }}">Feed</a>
                     </li>
                 </ul>
             </nav>

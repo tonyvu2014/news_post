@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="panel panel-default">
+	<p>
+		<i class="fa fa-info-circle" aria-hidden="true"></i>
+		<span class="text-muted">Set feed urls that you want to get the news from</span>
+	</p>
+	<span class="text-muted"><small><em>Press <span class="glyphicon glyphicon-plus gs"></span> to add and <span class="glyphicon glyphicon-minus gs"> </span> to remove feed, invalid urls will be ignored</em></small><span/>
+</div>
+<div class="panel panel-default">
+	<div class="controls"> 
+		<form role="form" autocomplete="off" action="{{ url_for('update_feed') }}" method="POST">
+			<div id="form_input">
+			{% for feed in feeds %}
+			<div class="entry input-group col-xs-3">
+				<input class="form-control" name="feed" value="{{ feed }}" type="text" placeholder="Type feed url" />
+				<span class="input-group-btn">
+					<button class="btn btn-danger btn-remove" type="button">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+			</div>
+			{% endfor %}
+			<div class="entry input-group col-xs-3">
+				<input class="form-control" name="feed" type="text" placeholder="Type feed url" />
+				<span class="input-group-btn">
+					<button class="btn btn-success btn-add" type="button">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+			</div>
+		   </div>
+		   <br/>
+			<button type="submit" class="btn btn-primary">Set</button>
+		</form>
+	</div>
+</div>
+<script>
+$(function()
+{
+    $(document).on('click', '.btn-add', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('.controls form:first #form_input'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+
+		e.preventDefault();
+		return false;
+	});
+});
+</script>
+{% endblock %}

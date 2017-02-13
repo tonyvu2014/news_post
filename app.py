@@ -1,5 +1,6 @@
 import os
 import redis
+import validators
 from flask import Flask, render_template, url_for, request, redirect
 from read_news_feed import (
     read_config_all_subscribe_news_feed_in_parallel, 
@@ -15,7 +16,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    news_list = sorted(read_config_all_subscribe_news_feed_in_parallel(), key=lambda x:x.published_date, reverse=True)
+    news_list = sorted(read_db_all_subscribe_news_feed_in_parallel(), key=lambda x:x.published_date, reverse=True)
     return render_template('index.html', news_list=news_list)
     
     
@@ -28,7 +29,6 @@ def main():
 @app.route("/update_category/", methods=["POST"])
 def update_category():
     category = request.form[const.CATEGORY].split(",")  
-    print(str(category))
     del_key(const.CATEGORY)
     add_to_list(const.CATEGORY, category)
     return redirect(url_for('main'))
@@ -66,7 +66,22 @@ def update_token():
     return redirect(url_for('main'))
     
     
+@app.route("/set_feed")    
+def set_feed():
+    feeds = get_list(const.FEED)
+    return render_template('feed_form.html', feeds=feeds)
+  
+    
+@app.route("/update_feed/", methods=["POST"])
+def update_feed():
+    feed = filter(lambda x: validators.url(x), request.form.getlist(const.FEED))
+    del_key(const.FEED)
+    add_to_list(const.FEED, feed)
+    return redirect(url_for('main'))
+        
+    
 app.wsgi_app = ProxyFix(app.wsgi_app)            
+
 
 if __name__ == "__main__":
     port = int(os.getenv('PORT', 8000))

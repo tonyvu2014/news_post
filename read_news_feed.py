@@ -5,7 +5,7 @@ from read_config import read_feed_config
 from news_feed import read_subscribe_news_feed
 from common import const
 from common.utils import unpack_args
-from db_manager import get_value     
+from db_manager import get_value, get_list     
     
             
 def read_config_all_subscribe_news_feed():
@@ -19,16 +19,16 @@ def read_config_all_subscribe_news_feed_in_parallel():
     
             
 def read_db_all_subscribe_news_feed():
-    urls = get_value(const.FEED_URL)
-    categories = get_value(const.CATEGORY)
+    urls = get_list(const.FEED)
+    categories = get_list(const.CATEGORY)
     for url in urls:
         for news in read_subscribe_news_feed(url, categories):
             yield news  
             
             
 def read_db_all_subscribe_news_feed_in_parallel():
-    urls = get_value(const.FEED_URL)
-    categories = get_value(const.CATEGORY)
+    urls = get_list(const.FEED)
+    categories = get_list(const.CATEGORY)
     return get_news_feed_in_parallel(urls, categories)
                     
 
