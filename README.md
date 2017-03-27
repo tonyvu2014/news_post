@@ -16,7 +16,7 @@ The technologies used are:
 - font-awesome 
 
 
-##Usage
+## Usage
 
 1. Go to category to add/remove category that you want to subscribe to
 
@@ -27,7 +27,7 @@ The technologies used are:
 4. From homepage, click on `Update News` to refresh the page 
 
 
-##To  run with virtual environment:
+## To  run with virtual environment:
 
 
 1. Install pip and set up the virtual environment
@@ -40,7 +40,7 @@ The technologies used are:
 
    or you can start the app with supervisor `supervisord -c conf/supervisord.conf`
 
-##To run with Docker
+## To run with Docker
 
 1. From the root folder, run `docker build -t news_post .` to build the docker image
 
